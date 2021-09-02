@@ -11,7 +11,6 @@ var twoSum = function(numbers, target) {
             }
         }
     }
-    
     return indexPair;
 };
 
@@ -31,7 +30,6 @@ var twoSum = function(numbers, target) {
             }
         }
     }
-    
     return indexPair;
 };
 
