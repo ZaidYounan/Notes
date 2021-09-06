@@ -99,7 +99,8 @@ console.log(findZigZagSequence([1, 2, 3, 4, 5, 6, 7], 7));
 
 
 
-/* First successful attempt, but has a slow run-time. Next attempt is much faster. */
+/* First successful attempt at Max Sum, but has a slow run-time. 
+Next attempt is much faster. */
 
 
 function findMaxSum(numbers) {
