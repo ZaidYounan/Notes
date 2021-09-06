@@ -37,6 +37,29 @@ var twoSum = function(numbers, target) {
 
 
 
+/* Simple Fizzbuzz solution in an IIFE (immediately invoked function expression) */
+
+(function fizzBuzz() {
+    for (let i = 1; i <= 100; i++) {
+        if (i % 15 == 0) {
+            console.log("FizzBuzz");
+        }
+        else if (i % 5 == 0) {
+            console.log("Buzz");
+        }
+        else if (i % 3 == 0) {
+            console.log("Fizz");
+        }
+        else {
+            console.log(i);
+        }
+    }
+})();
+
+
+
+
+
 /* Two Sum II second successful attempt, much faster. This one was tricky. 
 In the end I got an idea for this from a youtube video, and I solved it by 
 iteratively checking the values of the first and last array indices. 
