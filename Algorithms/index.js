@@ -172,3 +172,41 @@ function findMaxSum(numbers) {
 }
 
 console.log(findMaxSum([ 5, 9, 7, 11 ])); // should print 20
+
+
+
+
+
+/* This next one was given as part of a technical assessment for a job interview, 
+the goal of the function being to test inputted strings to see if the letters
+were surrounded by a '+' symbol. If not, it would return false. Although it's 
+not a difficult question, I didn't solve it properly during the test, as I was 
+running out of time and had other questions to answer. It's a bit difficult for me
+to focus properly when I have the pressure of a (short) time limit, something I need
+to work on. */
+
+function SimpleSymbols(str) { 
+    const stringArray = str.split('');
+    let result = true;
+  
+    for (let i = 0; i < stringArray.length; i++) {
+      
+      console.log(stringArray[i]);
+      if (stringArray[i].match(/[a-zA-Z]/) && (stringArray[i+1] !== undefined && stringArray[i-1] !== undefined)) {
+        if (stringArray[i-1] !== "+" || stringArray[i+1] !== "+") {
+          console.log('awww');
+          result = false;
+          break;
+        }  
+      } else {
+        continue
+      }
+  }
+    return result;
+}
+
+console.log(SimpleSymbols('+n====4===+s+'));
+
+
+
+  
