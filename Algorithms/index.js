@@ -208,5 +208,46 @@ function SimpleSymbols(str) {
 console.log(SimpleSymbols('+n====4===+s+'));
 
 
+/* It's been a while since I've taken up "leetcoding" - but I took on this one today. The goal was to create a function 
+that converted roman numerals  in string format into an integer value. It was a bit tricky to begin with, since with Roman numerals you
+have to do some subtraction (e.g. when I is before X or V) - however I was able to come up with a solution eventually. I think my solution is
+"okay", but I wonder what other, more efficient solutions might be out there.*/
+
+
+var romanToInt = function(s) {
+    const numerals = { "I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000 }
+    
+    let sum = 0;
+    for (let i=0; i < s.length; i++) {
+        if (s[i] == 'I' && s[i+1] == 'V') {
+            sum += 4;
+            i++;
+        }
+        else if (s[i] == 'I' && s[i+1] == 'X') {
+            sum += 9;
+            i++;
+        }
+        else if (s[i] == 'X' && s[i+1] == 'L') {
+            sum += 40;
+            i++;
+        }
+        else if (s[i] == 'X' && s[i+1] == 'C') {
+            sum += 90;
+            i++;
+        }
+        else if (s[i] == 'C' && s[i+1] == 'D') {
+            sum += 400;
+            i++;
+        }
+        else if (s[i] == 'C' && s[i+1] == 'M') {
+            sum += 900;
+            i++;
+        }   
+        else {
+          sum += numerals[s[i]];
+      }
+    }
+  return sum;  
+};
 
   
