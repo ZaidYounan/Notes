@@ -251,3 +251,29 @@ var romanToInt = function(s) {
 };
 
   
+/* This next one is a bit tricky - and so far I only have a partial solution.
+Once again, i'm using two for loops - one to run through the index of the array,
+and another to run through the individual characters in each string.
+I have an extra counter "k" which i plan to use to measure if all of the characters measured in
+that iteration are the same. */
+
+function longestCommonPrefix(strs){
+    let output = "";
+    let k = 0;
+
+    for (let i=0; i < strs.length; i++) {
+      for (let r=0; r < strs.length-1; r++) {
+        if (strs[r][i] == strs[r+1][i]) {
+          k++;
+        } 
+        console.log(output)
+        if (k >= strs.length-1) {
+          output += strs[r][i];
+          let k = 0;
+        }
+      }
+    }
+    return output;
+};
+
+console.log(longestCommonPrefix(["flower","flow","flight"]))
