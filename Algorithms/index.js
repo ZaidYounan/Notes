@@ -260,6 +260,15 @@ that iteration are the same. */
 function longestCommonPrefix(strs){
     let output = "";
     let k = 0;
+  
+    if (!strs[0]) {
+        return output;
+    }
+  
+    if (strs.length === 1) {
+      output += strs;
+      return output;
+    }
 
     for (let i=0; i < strs.length; i++) {
       for (let r=0; r < strs.length-1; r++) {
@@ -267,13 +276,47 @@ function longestCommonPrefix(strs){
           k++;
         } 
         console.log(output)
+        console.log(`current character is ${strs[r][i]}`)
+        console.log(r)
+        console.log(i)
         if (k >= strs.length-1) {
           output += strs[r][i];
-          let k = 0;
+          break
         }
       }
+      k = 0;
     }
     return output;
 };
 
-console.log(longestCommonPrefix(["flower","flow","flight"]))
+console.log(longestCommonPrefix(["flower","flower","flower","flower"]))
+
+
+/* This is the solution i ended up coming up with, not the
+most elegant solution by any means - but it works. If i took the
+time to think it through, i could probably make something much cleaner.
+But i'm happy that it works. */
+
+var longestCommonPrefix = function(strs) {
+    let output = "";
+  
+    if (!strs[0]) {
+        return output;
+    }
+    
+    if (strs.length === 1) {
+        return output += strs;
+    }
+ 
+    for (let i=0; i <= strs[0].length; i++) {
+      for (let r=0; r < strs.length-1; r++) {
+        if (strs[0][i] !== strs[r+1][i]) {
+          return output += strs[0].slice(0, i);
+        }
+      }
+    }
+    if (strs[0] == strs[1]) {
+        return output += strs[0];
+    }
+    return output;
+};
