@@ -320,3 +320,23 @@ var longestCommonPrefix = function(strs) {
     }
     return output;
 };
+
+
+/* Had a busy weekend, but I decided to tackle a quick problem before bed. Problem is called "Valid parentheses",
+the goal being (as the name implies) to check if the parentheses in a string is valid.
+This is a partial solution, it passes most tests - except ones where the parentheses
+are valid but mixed - e.g. "{()}". I have a couple ideas on how to resolve the issue, which I'll
+try out tomorrow. */
+
+
+var isValid = function(s) {
+    for (let i = 0; i < s.length; i++) {
+        if (s[i]+s[i+1] == "{}" || s[i]+s[i+1] == "[]" || s[i]+s[i+1] == "()") {
+            i++;
+            continue;
+        } else {
+            return false;
+        }
+    }
+    return true;
+};
