@@ -340,3 +340,60 @@ var isValid = function(s) {
     }
     return true;
 };
+
+/* My second attempt tried to implement an idea i found online called "stacking",
+but I tried to improvise and ended up implementing it slightly wrong - causing it 
+to fail some tests (such as the one shown below).*/
+
+var isValid = function(s) {
+    let stack = [];
+    let charLeft = ["[", "(", "{"];
+    let charRight = ["]", ")", "}"];
+  
+  
+    
+    for (let i = 0; i < s.length; i++) {
+      const endChar = stack[stack.length-1];
+      
+      if (charLeft.includes(s[i])) {
+        stack.push(s[i]);
+      } else if (charRight.includes(s[i]) && charLeft.includes(endChar) && stack.length !== 0) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+    
+    return stack.length === 0;
+  };
+  
+  console.log(isValid("[}"))
+  
+
+  /* This is the final, working solution that had an extremely fast runtime
+  of 56ms on Leetcode. However i can't claim the credit for most of this one,
+  as using the "stacking" method is not my original idea. I did gain a lot while
+  mulling this one over, though.*/
+
+  var isValid = function(s) {
+    let stack = [];
+    let charLeft = ["[", "(", "{"];
+  
+    for (let i = 0; i < s.length; i++) {
+      const endChar = stack[stack.length-1];
+      
+      if (charLeft.includes(s[i])) {
+        stack.push(s[i]);
+      } else if (s[i] === ')' && endChar === '(' && stack.length !== 0) {
+        stack.pop();
+      } else if (s[i] === '}' && endChar === '{' && stack.length !== 0) {
+        stack.pop();
+      } else if (s[i] === ']' && endChar === '[' && stack.length !== 0) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+    
+    return stack.length === 0;
+  };
